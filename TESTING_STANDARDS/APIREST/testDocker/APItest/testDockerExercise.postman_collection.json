@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "7479f950-d1a3-4fb9-a47f-ccd6768ad72a",
+		"name": "testDockerExercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Postman BDD Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87a14b26-4794-4308-9664-e6a998e0d6b1",
+						"type": "text/javascript",
+						"exec": [
+							"postman.setGlobalVariable('postmanBDD', responseBody);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://bigstickcarpet.com/postman-bdd/dist/postman-bdd.min.js"
+			},
+			"response": []
+		},
+		{
+			"name": "Hello Docker",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ce41d85-8d69-4a5b-9bee-7aa2c13bd3db",
+						"type": "text/javascript",
+						"exec": [
+							"eval(globals.postmanBDD);",
+							"",
+							"",
+							"",
+							"  it('Should return a valid response', () => {",
+							"    ",
+							"    response.should.have.status(200);",
+							"    ",
+							"    response.body.should.not.be.empty;",
+							"",
+							"  });",
+							"  ",
+							"  it('Body should have \"Hello World\"', () => {",
+							"",
+							"    response.body.should.include('Hello World');",
+							"      ",
+							"  });",
+							"  ",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://192.168.9.24:4001/"
+			},
+			"response": []
+		}
+	]
+}
